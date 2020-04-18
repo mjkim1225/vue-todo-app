@@ -9,7 +9,6 @@
     <div id="app">
         <h1>Todo App</h1>
         <input type="text" v-model="inputText" v-on:keyup.enter="addItem">
-        <button v-on:click="fetchItems">add</button>
         <div>
             <li v-for="(todoItem, index) in todoItems">
                 {{ todoItem }}
@@ -42,12 +41,8 @@
                 },
                 fetchItems: function(){
                     for(var i=0; i<localStorage.length; i++){
-                        this.addItem()
                         var item = localStorage.key(i);
-                        console.log(item);
-                        if(!this.todoItems.includes(item)){
-                            this.todoItems.push(item);
-                        }
+                        this.todoItems.push(item);
                     }
                 },
                 removeItem: function(todoItem, index){
